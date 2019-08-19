@@ -22,4 +22,16 @@ describe("<Display />", () => {
     expect(queryByText(/closed/i)).toBeTruthy();
     expect(queryByText(/locked/i)).toBeTruthy();
   });
+  it("Should have red-led when locked or closed", () => {
+    const { queryAllByTestId } = render(
+      <Display closed={false} locked={false} />
+    );
+    expect(queryAllByTestId("led green-led")).toBeTruthy();
+  });
+  it("Should have red-led when locked or closed", () => {
+    const { queryAllByTestId } = render(
+      <Display closed={true} locked={true} />
+    );
+    expect(queryAllByTestId("led red-led")).toBeTruthy();
+  });
 });
