@@ -9,4 +9,17 @@ describe("<Display />", () => {
     const tree = renderer.create(<Display />);
     expect(tree.toJSON()).toMatchSnapshot();
   });
+  it("should Displays unlocked", () => {
+    const { queryByText } = render(<Display />);
+    expect(queryByText(/unlocked/i)).toBeTruthy();
+  });
+  it("should Displays open", () => {
+    const { queryByText } = render(<Display />);
+    expect(queryByText(/open/i)).toBeTruthy();
+  });
+  it('should "closed" and "locked" equal false', () => {
+    const { queryByText } = render(<Display closed={true} locked={true} />);
+    expect(queryByText(/closed/i)).toBeTruthy();
+    expect(queryByText(/locked/i)).toBeTruthy();
+  });
 });
